@@ -481,6 +481,7 @@ this.fn_setRow = function(nRow)
       <BindItem id="item7" compid="div_detail.form.chk_married" propid="value" datasetid="ds_emp" columnid="MARRIED"/>
       <BindItem id="item8" compid="div_detail.form.txt_memo" propid="value" datasetid="ds_emp" columnid="MEMO"/>
       <BindItem id="item10" compid="div_detail.form.lst_pos" propid="value" datasetid="ds_emp" columnid="POS_CD"/>
+      <BindItem id="item3" compid="div_detail.form.cbo_dept" propid="text" datasetid="ds_emp" columnid="DEPT_CD"/>
     </Bind>
   </Form>
 </FDL>

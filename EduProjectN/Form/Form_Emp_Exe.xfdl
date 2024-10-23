@@ -42,7 +42,65 @@
         <Button id="btn_add" taborder="2" text="Add" top="10" width="80" height="30" right="180" cssclass="btn_WF_CRUD"/>
         <Button id="btn_del" taborder="3" text="Delete" top="10" width="80" height="30" right="95" cssclass="btn_WF_CRUD"/>
         <Button id="btn_save" taborder="4" text="Save" top="10" width="80" height="30" right="10" cssclass="btn_WF_CRUD"/>
-        <Grid id="grd_list" taborder="5" left="10" top="115" right="406" bottom="10"/>
+        <Grid id="grd_list" taborder="5" left="10" top="115" right="406" bottom="10" binddataset="ds_emp">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="48"/>
+                <Column size="90"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+                <Row size="24" band="summ"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="순번"/>
+                <Cell col="1" text="사번"/>
+                <Cell col="2" text="이름"/>
+                <Cell col="3" text="부서"/>
+                <Cell col="4" text="직위"/>
+                <Cell col="5" text="입사일자"/>
+                <Cell col="6" text="급여"/>
+                <Cell col="7" text="성별"/>
+                <Cell col="8" text="결혼여부"/>
+                <Cell col="9" text="MEMO"/>
+              </Band>
+              <Band id="body">
+                <Cell text="expr:currow + 1"/>
+                <Cell col="1" text="bind:EMPL_ID" displaytype="mask" edittype="mask" maskeditformat="AA-###" maskedittype="string" textAlign="center"/>
+                <Cell col="2" text="bind:FULL_NAME"/>
+                <Cell col="3" text="bind:DEPT_CD" displaytype="combotext" edittype="combo" combodataset="ds_dept" combodatacol="DEPT_NAME" combocodecol="DEPT_CD"/>
+                <Cell col="4" text="bind:POS_CD" displaytype="combocontrol" edittype="combo" combodataset="ds_pos" combocodecol="POS_CD" combodatacol="POS_NAME"/>
+                <Cell col="5" text="bind:HIRE_DATE"/>
+                <Cell col="6" text="bind:SALARY"/>
+                <Cell col="7" text="bind:GENDER"/>
+                <Cell col="8" text="bind:MARRIED" displaytype="checkboxcontrol" edittype="checkbox"/>
+                <Cell col="9" text="bind:MEMO"/>
+              </Band>
+              <Band id="summary">
+                <Cell text="expr:dataset.getRowCount() + '건'"/>
+                <Cell col="1"/>
+                <Cell col="2"/>
+                <Cell col="3"/>
+                <Cell col="4"/>
+                <Cell col="5"/>
+                <Cell col="6"/>
+                <Cell col="7"/>
+                <Cell col="8"/>
+                <Cell col="9"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
         <Div id="div_detail" taborder="6" text="Div00" top="115" right="10" width="390" bottom="10">
           <Layouts>
             <Layout>
@@ -56,7 +114,7 @@
               <Static id="Static04" taborder="19" text="" left="144" top="389" width="226" height="42" background="" padding="" cssclass="sta_WF_DetailArea" onclick="Div00_Static04_onclick"/>
               <Static id="Static07" taborder="21" text="" left="138" top="430" width="240" height="132" background="" padding="" cssclass="sta_WF_DetailArea" onclick="Div00_Static07_onclick"/>
               <Edit id="edt_name" taborder="0" left="144" top="18" width="226" height="30"/>
-              <MaskEdit id="msk_id" taborder="1" left="144" top="59" width="226" height="30"/>
+              <MaskEdit id="msk_id" taborder="1" left="144" top="59" width="226" height="30" type="string" format="AA-###"/>
               <ListBox id="lst_pos" taborder="2" left="144" top="141" width="226" height="120" innerdataset="@ds_pos" codecolumn="POS_CD" datacolumn="POS_NAME"/>
               <TextArea id="txt_memo" taborder="4" left="144" top="435" width="226" height="120"/>
               <Static id="Static08" taborder="7" text="Department" left="9" top="94" width="130" height="42" background="" padding="" cssclass="sta_WF_DetailLabel"/>
@@ -68,11 +126,33 @@
               <Static id="Static00" taborder="17" text="Emp ID" left="9" top="53" width="130" height="42" background="" padding="" cssclass="sta_WF_DetailEssential"/>
               <Static id="Static03" taborder="18" text="Married" left="9" top="307" width="130" height="42" background="" padding="" cssclass="sta_WF_DetailLabel"/>
               <Static id="Static05" taborder="20" text="Memo" left="9" top="430" width="130" height="132" background="" padding="" cssclass="sta_WF_DetailLabel" onclick="Div00_Static05_onclick"/>
-              <Combo id="Combo00" taborder="22" text="Combo00" left="144" top="101" width="226" height="30"/>
-              <Radio id="Radio00" taborder="23" left="144" top="272" width="226" height="33"/>
-              <CheckBox id="CheckBox00" taborder="24" text="CheckBox00" left="144" top="313" width="226" height="32"/>
+              <Combo id="Combo00" taborder="22" text="Combo00" left="144" top="101" width="226" height="30" onitemchanged="div_detail_Combo00_onitemchanged" innerdataset="ds_dept" codecolumn="DEPT_CD" datacolumn="DEPT_NAME"/>
+              <Radio id="Radio00" taborder="23" left="144" top="272" width="226" height="33" onitemchanged="div_detail_Radio00_onitemchanged" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" columncount="3" direction="horizontal">
+                <Dataset id="innerdataset">
+                  <ColumnInfo>
+                    <Column id="codecolumn" size="256"/>
+                    <Column id="datacolumn" size="256"/>
+                  </ColumnInfo>
+                  <Rows>
+                    <Row>
+                      <Col id="codecolumn">M</Col>
+                      <Col id="datacolumn">남자</Col>
+                    </Row>
+                    <Row>
+                      <Col id="codecolumn">W</Col>
+                      <Col id="datacolumn">여자</Col>
+                    </Row>
+                    <Row>
+                      <Col id="codecolumn">E</Col>
+                      <Col id="datacolumn">기타</Col>
+                    </Row>
+                  </Rows>
+                </Dataset>
+              </Radio>
+              <CheckBox id="CheckBox00" taborder="24" text="CheckBox00" left="144" top="313" width="25" height="32"/>
               <Calendar id="Calendar00" taborder="25" left="144" top="353" width="226" height="33"/>
-              <MaskEdit id="MaskEdit00" taborder="26" left="144" top="397" width="226" height="30"/>
+              <MaskEdit id="MaskEdit00" taborder="26" left="144" top="397" width="226" height="30" format="#,##0.00"/>
+              <Calendar id="Calendar01" taborder="27" left="185" top="316" width="182" height="29" visible="false"/>
             </Layout>
           </Layouts>
         </Div>
@@ -259,5 +339,24 @@
         </Rows>
       </Dataset>
     </Objects>
+    <Bind>
+      <BindItem id="item0" compid="div_detail.form.edt_name" propid="value" datasetid="ds_emp" columnid="FULL_NAME"/>
+      <BindItem id="item1" compid="div_detail.form.msk_id" propid="value" datasetid="ds_emp" columnid="EMPL_ID"/>
+      <BindItem id="item2" compid="div_detail.form.CheckBox00" propid="value" datasetid="ds_emp" columnid="MARRIED"/>
+      <BindItem id="item3" compid="div_detail.form.MaskEdit00" propid="value" datasetid="ds_emp" columnid="SALARY"/>
+      <BindItem id="item4" compid="div_detail.form.txt_memo" propid="value" datasetid="ds_emp" columnid="MEMO"/>
+      <BindItem id="item5" compid="div_detail.form.Calendar00" propid="value" datasetid="ds_emp" columnid="HIRE_DATE"/>
+      <BindItem id="item6" compid="div_detail.form.Calendar01" propid="visible" datasetid="ds_emp" columnid="MARRIED"/>
+      <BindItem id="item7" compid="div_detail.form.txt_memo" propid="background" datasetid="ds_emp" columnid="MEMO"/>
+      <BindItem id="item8" compid="div_detail.form.Combo00" propid="value" datasetid="ds_emp" columnid="DEPT_CD"/>
+      <BindItem id="item9" compid="div_detail.form.lst_pos" propid="value" datasetid="ds_emp" columnid="POS_CD"/>
+      <BindItem id="item10" compid="div_detail.form.Radio00" propid="value" datasetid="ds_emp" columnid="GENDER"/>
+    </Bind>
+    <Script type="xscript5.1"><![CDATA[
+this.div_detail_Radio00_onitemchanged = function(obj:nexacro.Radio,e:nexacro.ItemChangeEventInfo)
+{
+	
+};
+]]></Script>
   </Form>
 </FDL>
