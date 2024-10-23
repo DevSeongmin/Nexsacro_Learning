@@ -5,6 +5,11 @@
       <Screen id="Desktop_screen" type="desktop"/>
     </ScreenDefinition>
     <Variables/>
-    <Cookies/>
+    <Cookies>
+      <Cookie id="JSESSIONID" secure="false"/>
+    </Cookies>
+    <httpheader>
+      <Variable id="HD_VAR1"/>
+    </httpheader>
   </Environment>
 </ENV>

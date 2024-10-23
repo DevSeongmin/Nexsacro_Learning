@@ -1,0 +1,393 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="Comp_MultiCombo" width="1000" height="700" titletext="Component-Checkbox">
+    <Layouts>
+      <Layout height="700" mobileorientation="landscape" width="1000" stepcount="2">
+        <Static id="Static08" taborder="0" text="MultiCombo" left="10" top="10" width="250" height="30" cssclass="sta_WF_Subtitle" onclick="Static08_onclick" positionstep="-1"/>
+        <TextArea id="txt_result" taborder="1" top="49" height="341" right="10" width="280" value="MultiCombo &#10;--------------------------------------&#10;*컴포넌트는 여러 아이템 목록 중에서 한 개 이상의 값을 선택하기 위한 용도로 사용하는 컴포넌트입니다.&#10;*Combo 컴포넌트와 비슷하지만 여러 개 값을 선택할 수 있고 edittype 속성값에 따라 선택한 값을 다양한 형태로 표현할 수 있습니다." onchanged="txt_result_onchanged" positionstep="-1"/>
+        <Grid id="Grid00" taborder="2" top="400" height="265" binddataset="dsMultiCombo" autofittype="col" autosizingtype="none" right="10" width="280" positionstep="-1">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row band="head" size="24"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="code"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:code"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static07_01" taborder="3" text="description" top="15" height="30" cssclass="sta_WF_TypeTitle" right="150" width="140" positionstep="-1"/>
+        <Button id="btn_set_index" taborder="4" text="set_index(&quot;0, 4, 5&quot;)" left="25" top="580" width="270" height="40" onclick="Button_onclick"/>
+        <Button id="btn_set_index2" taborder="5" text="set_index(&quot;-1&quot;)" left="25" top="625" width="270" height="40" onclick="Button_onclick"/>
+        <Static id="Static07_00" taborder="6" text="Property" left="10" top="50" width="250" height="30" cssclass="sta_WF_TypeTitle"/>
+        <Static id="Static07_00_00" taborder="7" text="Method" left="16" top="50" width="250" height="30" cssclass="sta_WF_TypeTitle" positionstep="1"/>
+        <Button id="Button00" taborder="8" text="reload" top="8" width="135" height="35" onclick="Button00_onclick" right="10" positionstep="-1"/>
+        <MultiCombo id="mcbText" taborder="9" text="Basil Rivera,Clayton Chandler,Constance Trevino" left="25" top="135" width="405" height="40" edittype="text" innerdataset="dsMultiCombo" codecolumn="code" datacolumn="code" onitemchanged="MultiCombo_onitemchanged" index="0,1,2" value="Basil Rivera,Clayton Chandler,Constance Trevino"/>
+        <Static id="Static00" taborder="10" text="singletag" left="25" top="180" width="178" height="20"/>
+        <MultiCombo id="mcbSingletag" taborder="11" text="Basil Rivera,Clayton Chandler,Constance Trevino" left="25" top="200" width="405" height="50" edittype="singletag" innerdataset="dsMultiCombo" codecolumn="code" datacolumn="code" onitemchanged="MultiCombo_onitemchanged" index="0,1,2" value="Basil Rivera,Clayton Chandler,Constance Trevino" buttonsize="40"/>
+        <MultiCombo id="mcbMultitag" taborder="12" text="Basil Rivera,Clayton Chandler,Constance Trevino" left="440" top="135" width="260" height="180" edittype="multitag" innerdataset="dsMultiCombo" codecolumn="code" datacolumn="code" onitemchanged="MultiCombo_onitemchanged" index="0,1,2" value="Basil Rivera,Clayton Chandler,Constance Trevino" buttonsize="40"/>
+        <MultiCombo id="mcbCount" taborder="13" text="Basil Rivera,Clayton Chandler,Constance Trevino" left="25" top="275" width="405" height="40" edittype="count" innerdataset="dsMultiCombo" codecolumn="code" datacolumn="code" onitemchanged="MultiCombo_onitemchanged" index="0,1,2" value="Basil Rivera,Clayton Chandler,Constance Trevino"/>
+        <Static id="Static00_00" taborder="14" text="multitag" left="440" top="115" width="260" height="20"/>
+        <Static id="Static00_01" taborder="15" text="text" left="25" top="115" width="150" height="20"/>
+        <Static id="Static00_01_00" taborder="16" text="count" left="25" top="254" width="178" height="20"/>
+        <Radio id="Radio00" taborder="17" left="25" top="348" width="363" height="116" innerdataset="dsCounttextformat" codecolumn="code" datacolumn="code" onitemchanged="Radio00_onitemchanged"/>
+        <Static id="Static00_01_00_00" taborder="18" text="counttextformat" left="25" top="318" width="178" height="25" font="bold 14px/normal &quot;Verdana&quot;,&quot;Malgun Gothic&quot;"/>
+        <Button id="btn_showselectallcheckbox" taborder="19" text="showselectallcheckbox(true)" left="25" top="535" width="270" height="40" onclick="Button_onclick"/>
+        <MultiCombo id="mcbSelectAll" taborder="20" text="MultiCombo00" left="300" top="535" width="405" height="40" edittype="text" innerdataset="dsMultiCombo" codecolumn="code" datacolumn="code" onitemchanged="MultiCombo_onitemchanged"/>
+        <Button id="btn_textseparator" taborder="21" text="가" left="25" top="490" width="55" height="40" onclick="fn_textseparator"/>
+        <MultiCombo id="mcbTextseparator" taborder="22" text="Basil Rivera,Clayton Chandler,Constance Trevino" left="300" top="490" width="405" height="40" edittype="text" innerdataset="dsMultiCombo" codecolumn="code" datacolumn="code" onitemchanged="MultiCombo_onitemchanged" index="0,1,2" value="Basil Rivera,Clayton Chandler,Constance Trevino"/>
+        <Static id="Static00_01_00_00_00" taborder="23" text="textseparator" left="25" top="465" width="178" height="25" font="bold 14px/normal &quot;Verdana&quot;,&quot;Malgun Gothic&quot;"/>
+        <Button id="btn_textseparator00" taborder="24" text="&amp;" left="79" top="490" width="55" height="40" onclick="fn_textseparator"/>
+        <Button id="btn_textseparator00_00" taborder="25" text="@" left="133" top="490" width="55" height="40" onclick="fn_textseparator"/>
+        <Button id="btn_textseparator00_00_00" taborder="26" text=";" left="187" top="490" width="55" height="40" onclick="fn_textseparator"/>
+        <Button id="btn_textseparator00_00_00_00" taborder="27" text="," left="241" top="490" width="55" height="40" onclick="fn_textseparator"/>
+        <MultiCombo id="mcbIndex" taborder="28" text="" left="300" top="580" width="405" height="85" edittype="multitag" innerdataset="dsMultiCombo" codecolumn="code" datacolumn="code" onitemchanged="MultiCombo_onitemchanged" value="" buttonsize="40"/>
+        <MultiCombo id="MultiCombo00" taborder="29" text="Basil Rivera,Clayton Chandler,Constance Trevino" left="25" top="80" width="545" height="120" edittype="multitag" innerdataset="dsMultiCombo" codecolumn="code" datacolumn="code" onitemchanged="MultiCombo_onitemchanged" index="0,1,2" value="Basil Rivera,Clayton Chandler,Constance Trevino" positionstep="1" buttonsize="40"/>
+        <Button id="btn_setSelect" taborder="30" text="setSelect(0, true)" left="25" top="207" width="270" height="40" onclick="Button_onclick" positionstep="1"/>
+        <Button id="btn_setSelect0" taborder="31" text="setSelect(0, false)" left="300" top="207" width="270" height="40" onclick="Button_onclick" positionstep="1"/>
+        <Button id="btn_setSelectRange" taborder="32" text="setSelectRange(1, 6, true)" left="25" top="297" width="270" height="40" onclick="Button_onclick" positionstep="1"/>
+        <Button id="btn_setSelectItems" taborder="33" text="setSelectItems([5, 3, 1], true)" left="25" top="252" width="270" height="40" onclick="Button_onclick" positionstep="1"/>
+        <Button id="btn_setSelectItems0" taborder="34" text="setSelectItems([5, 3, 1], false)" left="300" top="252" width="270" height="40" onclick="Button_onclick" positionstep="1"/>
+        <Button id="btn_setSelectRange0" taborder="35" text="setSelectRange(1, 6, false)" left="300" top="297" width="270" height="40" onclick="Button_onclick" positionstep="1"/>
+        <Button id="btn_clearSelect" taborder="36" text="clearSelect()" left="300" top="387" width="270" height="40" onclick="Button_onclick" positionstep="1"/>
+        <Button id="btn_selectAll" taborder="37" text="selectAll()" left="25" top="342" width="270" height="40" onclick="Button_onclick" positionstep="1"/>
+        <Button id="btn_getSelectedCount" taborder="38" text="getSelectedCount" left="25" top="387" width="270" height="40" onclick="Button_onclick" positionstep="1"/>
+        <Button id="btn_getSelectedItems00" taborder="39" text="getSelectedItems" left="300" top="342" width="270" height="40" onclick="Button_onclick" positionstep="1"/>
+        <Static id="Static07_00_00_00" taborder="40" text="Grid" left="15" top="434" width="250" height="30" cssclass="sta_WF_TypeTitle" positionstep="1"/>
+        <Grid id="Grid01" taborder="41" left="25" top="474" width="545" height="191" positionstep="1" binddataset="dsGrid" autofittype="col" onheadvaluechanged="Grid01_onheadvaluechanged">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="182"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="Column0"/>
+                <Cell col="1" text="Column1"/>
+                <Cell col="2" text="Column2"/>
+                <Cell row="1" displaytype="multicombocontrol" edittype="multicombo" multicombodataset="dsCombo" multicombocodecol="code" multicombodatacol="data"/>
+                <Cell row="1" col="1"/>
+                <Cell row="1" col="2"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:Column0"/>
+                <Cell col="1" text="bind:Column1"/>
+                <Cell col="2" text="bind:Column2"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static00_01_00_00_01" taborder="42" text="edittype" left="25" top="85" width="178" height="25" font="bold 14px/normal &quot;Verdana&quot;,&quot;Malgun Gothic&quot;"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[this.CheckBoxSet00_canitemchange = function(obj:nexacro.CheckBoxSet,e:nexacro.ItemChangeEventInfo)
+{
+	var strRtn = "";
+	strRtn += "obj : " + obj.name;
+	strRtn += "\ne.eventid : " + e.eventid;
+	strRtn += "\n--------------------------------------";
+	strRtn += "\ne.postindex : " + e.postindex;
+	strRtn += "\ne.postvalue : " + e.postvalue;
+	strRtn += "\ne.posttext : " + e.posttext;
+	strRtn += "\n--------------------------------------";
+	strRtn += "\ne.preindex : " + e.preindex;
+	strRtn += "\ne.prevalue : " + e.prevalue;
+	strRtn += "\ne.pretext : " + e.pretext;
+	
+	this.txt_result.set_value(strRtn);
+};
+
+this.Button_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	
+	var strTxt = obj.text;
+	var strDes = "";
+	
+	switch(strTxt) {
+		case 'showselectallcheckbox(true)':
+			this.mcbSelectAll.set_showselectallcheckbox(true);
+			strDes = "아이템 리스트 상단에 아이템 전체를 선택 또는 선택해제하는 체크박스의 표시 여부를 설정하는 속성입니다.\n";
+			strDes += "멀티콤보를 클릭하면 SELECT ALL 이 추가된 것을 확인할 수 있습니다. ";
+			obj.set_text('showselectallcheckbox(false)')
+			break;		
+		case 'showselectallcheckbox(false)':	
+			this.mcbSelectAll.set_showselectallcheckbox(false);
+			strDes = "아이템 리스트 상단에 아이템 전체를 선택 또는 선택해제하는 체크박스의 표시 여부를 설정하는 속성입니다.\n";
+			strDes += "멀티콤보를 클릭하면 SELECT ALL 이 삭제된 것을 확인할 수 있습니다. ";
+			obj.set_text('showselectallcheckbox(true)')
+			break;			
+		case 'set_index("0, 4, 5")':	
+			this.mcbIndex.set_index("0, 4, 5");
+			strDes = "MultiCombo 컴포넌트의 아이템 중 선택된 아이템의 인덱스를 갖는 속성입니다.";
+			break;				
+		case 'set_index("-1")':	
+			this.mcbIndex.set_index("-1");
+			strDes = "MultiCombo 컴포넌트의 아이템 중 선택된 아이템의 인덱스를 갖는 속성입니다.";
+			break;
+			
+		case 'setSelect(0, true)':
+			this.MultiCombo00.clearSelect();
+			this.MultiCombo00.setSelect(0, true);
+			strDes = 'MultiCombo 컴포넌트에서 특정 아이템의 선택상태를 설정하는 메서드입니다.';
+			strDes += '\ntrue 설정 시 아이템이 선택상태로 설정됩니다';
+			break;		
+		case 'setSelect(0, false)':
+			this.MultiCombo00.setSelect(0, false);
+			strDes = 'MultiCombo 컴포넌트에서 여러 개의 아이템을 선택하는 메서드입니다.';
+			strDes += '\nfalse 설정 시 아이템의 선택상태가 해제됩니다.';
+			break;		
+		case 'setSelectItems([5, 3, 1], true)':
+			this.MultiCombo00.clearSelect();
+			this.MultiCombo00.setSelectItems([5, 3, 1], true);
+			strDes = 'MultiCombo 컴포넌트에서 여러 개의 아이템을 선택하는 메서드입니다.';
+			strDes += '\ntrue 설정 시 아이템이 선택상태로 설정됩니다';
+			
+			break;		
+		case 'setSelectItems([5, 3, 1], false)':
+			this.MultiCombo00.setSelectItems([5, 3, 1], false);
+			strDes = 'MultiCombo 컴포넌트에서 여러 개의 아이템을 선택하는 메서드입니다.';
+			strDes += '\nfalse 설정 시 아이템이 선택상태가 해제됩니다';			
+			break;
+		case 'setSelectRange(1, 6, true)':
+			this.MultiCombo00.clearSelect();
+			this.MultiCombo00.setSelectRange(1, 6, true);
+			strDes = 'MultiCombo 컴포넌트에서 지정된 인덱스 범위의 아이템 영역을 선택하는 메서드입니다.';
+			strDes += '\ntrue 설정 시 아이템이 선택상태로 설정됩니다';
+			break;		
+		case 'setSelectRange(1, 6, false)':
+			this.MultiCombo00.setSelectRange(1, 6, false);
+			strDes = 'MultiCombo 컴포넌트에서 지정된 인덱스 범위의 아이템 영역을 선택하는 메서드입니다.';
+			strDes += '\nfalse 설정 시 아이템이 선택상태가 해제됩니다';			
+			break;							
+		case 'selectAll()':
+			this.MultiCombo00.selectAll();
+			strDes = 'MultiCombo 컴포넌트에서 아이템을 모두 선택하는 메서드입니다.';
+			break;
+		case 'clearSelect()':
+			this.MultiCombo00.clearSelect();
+			strDes = 'MultiCombo 컴포넌트에서 선택된 아이템의 선택상태를 모두 해제하는 메서드입니다.';
+			break;
+		case 'getSelectedCount':
+			strDes = this.MultiCombo00.getSelectedCount();
+			strDes += '\nMultiCombo 컴포넌트의 아이템 중 선택상태인 아이템의 개수를 반환하는 메서드입니다.';
+			break;		
+		case 'getSelectedItems':
+			strDes = this.MultiCombo00.getSelectedItems();
+			strDes += '\nMultiCombo 컴포넌트의 아이템 중 선택상태인 아이템의 인덱스를 배열로 반환하는 메서드입니다.';
+			break;					
+		default:
+	}
+	
+	var strRtn = "";
+	strRtn += strTxt;
+	strRtn += "\n--------------------------------------";
+	strRtn += "\n" + strDes;
+	this.txt_result.set_value(strRtn);
+};
+
+this.Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.reload();
+};
+
+
+this.Radio00_onitemchanged = function(obj:nexacro.Radio,e:nexacro.ItemChangeEventInfo)
+{
+	this.mcbCount.set_counttextformat(e.postvalue);
+	
+	var strRtn = "counttextformat"
+	strRtn += "\n--------------------------------------";
+	strRtn += '\nMultiCombo 컴포넌트의 edittype 속성값이 "count"일 때 선택된 아이템 개수를 표시할 텍스트를 설정하는 속성입니다.';
+	
+	this.txt_result.set_value(strRtn);
+};
+
+this.MultiCombo_onitemchanged = function(obj:nexacro.MultiCombo,e:nexacro.ItemChangeEventInfo)
+{
+	var strRtn = "";
+	strRtn += "** onitemchanged Event start **";
+	strRtn += "\nedittype    : " + obj.edittype;
+	strRtn += "\ne.postindex    : " + e.postindex;
+	strRtn += "\ne.posttext    : " + e.posttext;
+	strRtn += "\ne.postvalue    : " + e.postvalue;
+	strRtn += "\n--------------------------------------";
+	strRtn += "\ne.preindex    : " + e.preindex;
+	strRtn += "\ne.pretext    : " + e.pretext;
+	strRtn += "\ne.prevalue    : " + e.prevalue;
+	
+	this.txt_result.set_value(strRtn);
+};
+
+this.fn_textseparator = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.mcbTextseparator.set_textseparator(obj.text);
+	
+	var strRtn = "";
+	strRtn += "textseparator";
+	strRtn += "\n--------------------------------------";
+	strRtn += "\n구분자 : " + obj.text;
+	strRtn += '\nMultiCombo 컴포넌트에서 2개 이상의 text 속성값 설정 시 구분자로 사용할 값을 설정하는 속성입니다.';
+	
+	
+	this.txt_result.set_value(strRtn);
+};
+
+
+
+
+
+this.Grid01_onheadvaluechanged = function(obj:nexacro.Grid,e:nexacro.GridHeadValueChangedEventInfo)
+{
+
+	if(!e.newvalue) {
+		this.dsGrid.filter("");
+		return;	
+	}	
+	
+	var array = (e.newvalue).split(",");
+	var filterString = "";
+	
+	if(array) {
+		filterString = array.map(function(item) {
+			return "'" + item + "' == Column0";			
+		}).join("||");
+	
+		this.dsGrid.filter(filterString);
+	}
+};
+]]></Script>
+    <Objects>
+      <Dataset id="dsMultiCombo">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">Basil Rivera</Col>
+          </Row>
+          <Row>
+            <Col id="code">Clayton Chandler</Col>
+          </Row>
+          <Row>
+            <Col id="code">Constance Trevino</Col>
+          </Row>
+          <Row>
+            <Col id="code">Raymond Lara</Col>
+          </Row>
+          <Row>
+            <Col id="code">Hayfa Rodgers</Col>
+          </Row>
+          <Row>
+            <Col id="code">Vance Love</Col>
+          </Row>
+          <Row>
+            <Col id="code">Adena Pruitt</Col>
+          </Row>
+          <Row>
+            <Col id="code">Colleen Solis</Col>
+          </Row>
+          <Row>
+            <Col id="code">Benedict O'connor</Col>
+          </Row>
+          <Row>
+            <Col id="code">Hayes Melendez</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsCounttextformat">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">You have selected [#] items.</Col>
+          </Row>
+          <Row>
+            <Col id="code">You have selected [#] items from [*] items.</Col>
+          </Row>
+          <Row>
+            <Col id="code">You have selected [#] items.</Col>
+          </Row>
+          <Row>
+            <Col id="code">[#] / [*]</Col>
+          </Row>
+          <Row/>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsGrid">
+        <ColumnInfo>
+          <Column id="Column0" type="STRING" size="256"/>
+          <Column id="Column1" type="STRING" size="256"/>
+          <Column id="Column2" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="Column0">A</Col>
+            <Col id="Column1">A-0</Col>
+            <Col id="Column2">Basil Rivera</Col>
+          </Row>
+          <Row>
+            <Col id="Column0">B</Col>
+            <Col id="Column1">B-0</Col>
+            <Col id="Column2">Clayton Chandler</Col>
+          </Row>
+          <Row>
+            <Col id="Column0">A</Col>
+            <Col id="Column1">A-1</Col>
+            <Col id="Column2">Constance Trevino</Col>
+          </Row>
+          <Row>
+            <Col id="Column0">B</Col>
+            <Col id="Column1">B-1</Col>
+            <Col id="Column2">Raymond Lara</Col>
+          </Row>
+          <Row>
+            <Col id="Column0">A</Col>
+            <Col id="Column1">A-2</Col>
+            <Col id="Column2">Hayfa Rodgers</Col>
+          </Row>
+          <Row>
+            <Col id="Column0">B</Col>
+            <Col id="Column1">B-2</Col>
+            <Col id="Column2">Vance Love</Col>
+          </Row>
+          <Row>
+            <Col id="Column0">B</Col>
+            <Col id="Column1">B-3</Col>
+            <Col id="Column2">Adena Pruitt</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsCombo">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="data" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">A</Col>
+            <Col id="data">A</Col>
+          </Row>
+          <Row>
+            <Col id="code">B</Col>
+            <Col id="data">B</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+  </Form>
+</FDL>

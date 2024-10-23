@@ -1,5 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <AppVariables version="2.0">
   <Datasets/>
-  <Variables/>
+  <Variables>
+    <Variable id="GV_LOGIN_ID"/>
+    <Variable id="GV_PWD"/>
+  </Variables>
+  <DataObjects/>
 </AppVariables>
