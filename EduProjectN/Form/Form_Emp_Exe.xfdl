@@ -311,7 +311,7 @@ this.fn_call = function(svcid, ecd, emsag){
 		}
 		
 	} 
-	this.alert("error : " + ecd + ":" + emsg);
+	alert("error : " + ecd + ":" + emsg);
 }
 
 

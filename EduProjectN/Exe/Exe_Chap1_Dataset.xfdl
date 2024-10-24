@@ -171,6 +171,7 @@
         <Static id="Static05_00" taborder="59" text="Exe4" left="10" top="397" width="120" height="30" cssclass="sta_WF_LabelTxt" positionstep="1"/>
         <Static id="Static05_00_00" taborder="60" text="Exe5" left="510" top="397" width="120" height="30" cssclass="sta_WF_LabelTxt" positionstep="1"/>
         <Static id="Static05_00_00_00" taborder="61" text="Exe6" left="10" top="397" width="120" height="30" cssclass="sta_WF_LabelTxt" positionstep="2"/>
+        <Button id="Button00" taborder="62" text="Button00" left="685" top="510" width="106" height="26" onclick="Button00_onclick"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -415,10 +416,14 @@ this.btn_Exe1_1_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	
 	this.txtRtn1.set_value("Col Count=" + nColCount + " : Row Count=" + nRowCount);
     
-// 	for(var i=0; i<nColCount; i++){
-// 		var sColID = this.Dataset1.getColID(i);
-// 		trace("Col ID=" + sColID);
-// 	}
+ 	for(var i=0; i<nColCount; i++){
+//  		var sColID = this.Dataset1.getColID(i);
+//  		trace("Col ID=" + sColID);
+
+ 		var objCol = this.Dataset1.getColumnInfo(i);
+ 		trace(objCol.id + " : " + objCol.type + " : " + objCol.size);
+
+}
 
 };
 
@@ -434,6 +439,8 @@ this.btn_Exe2_1_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	var nRow = this.Dataset1.findRow("EMPL_ID", "KR120");
 	var sVal = this.Dataset1.getColumn(nRow, "FULL_NAME");
+	
+	sVal = this.Dataset1.lookup("EMPL_ID", "KR120", "FULL_NAME");
 
     trace(sVal);	
 	this.txtRtn1.set_value(sVal);	
@@ -497,6 +504,14 @@ this.btn_Exe3_3_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	this.Dataset1.set_keystring("S:-HIRE_DATE");	
 };
+
+this.Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.Dataset1.set_keystring("S:+HIRE_DATE");	
+};
+
+
+
 
 // Exe 3-4
 this.btn_Exe3_4_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
@@ -646,6 +661,7 @@ this.btn_Exe6_5_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	this.Dataset6.setColumn(1, "FULL_NAME", "Modify2");
 };
+
 ]]></Script>
   </Form>
 </FDL>

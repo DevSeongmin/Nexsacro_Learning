@@ -42,7 +42,7 @@
             </Format>
           </Formats>
         </Grid>
-        <Grid id="gdDept" taborder="2" left="13" top="50" width="317" height="300" binddataset="ds_dept" autofittype="col">
+        <Grid id="gdDept" taborder="2" left="13" top="50" width="317" height="300" binddataset="ds_dept" autofittype="col" oncellclick="gdDept_oncellclick">
           <Formats>
             <Format id="default">
               <Columns>
@@ -117,7 +117,7 @@
       </Layout>
     </Layouts>
     <Objects>
-      <Dataset id="ds_dept">
+      <Dataset id="ds_dept" onrowposchanged="ds_dept_onrowposchanged">
         <ColumnInfo>
           <Column id="DEPT_CD" type="STRING" size="32"/>
           <Column id="DEPT_NAME" type="STRING" size="32"/>
@@ -227,7 +227,22 @@
         </Rows>
       </Dataset>
     </Objects>
-    <Script type="xscript5.1"><![CDATA[]]></Script>
+    <Script type="xscript5.1"><![CDATA[
+this.gdDept_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+// trace("grid");
+// 	var objDs = obj.getBindDataset();
+// 	this.ds_emp.filter("DEPT_CD == '"+ objDs.getColumn(e.row, "DEPT_CD") + "'");
+// 	this.ds_emp.set_rowposition(0);
+};
+
+this.ds_dept_onrowposchanged = function(obj:nexacro.NormalDataset,e:nexacro.DSRowPosChangeEventInfo)
+{
+trace("dataset");
+	this.ds_emp.filter("DEPT_CD == '"+ obj.getColumn(e.newrow, "DEPT_CD") + "'");
+	this.ds_emp.set_rowposition(0);
+};
+]]></Script>
     <Bind>
       <BindItem id="item0" compid="div_detail.form.cbo_dept" propid="value" datasetid="ds_emp" columnid="DEPT_CD"/>
       <BindItem id="item1" compid="div_detail.form.edt_name" propid="value" datasetid="ds_emp" columnid="FULL_NAME"/>
