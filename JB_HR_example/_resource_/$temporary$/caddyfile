@@ -1,0 +1,8 @@
+﻿{
+admin off
+}
+:4098
+{
+root "C:/Users/SSAFY/Documents/TOBESOFT/Nexacro N/outputs/JB_HR_example"
+file_server
+}

@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.jb.nexacroserver.domain.department.dto.DepartmentData;
+import com.jb.nexacroserver.domain.department.dto.DepartmentSearch;
 import com.jb.nexacroserver.domain.department.repository.DepartmentRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -15,7 +15,7 @@ public class DepartmentService {
 
 	private final DepartmentRepository departmentRepository;
 
-	public List<DepartmentData.Search> getDepartmentList() {
-		return departmentRepository.findAll().stream().map(DepartmentData.Search::fromEntity).toList();
+	public List<DepartmentSearch> getDepartmentList() {
+		return departmentRepository.findAll().stream().map(DepartmentSearch::fromEntity).toList();
 	}
 }

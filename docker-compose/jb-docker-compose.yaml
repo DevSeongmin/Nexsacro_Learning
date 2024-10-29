@@ -16,7 +16,7 @@ services:
       - jb-db:/var/lib/mysql
 
   db-admin:
-    container_name: db-admin
+    container_name: jb-db-admin
     image: phpmyadmin/phpmyadmin
     ports:
       - "5000:80"
