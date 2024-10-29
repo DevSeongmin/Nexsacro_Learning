@@ -1,0 +1,208 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="popup_insert_employee" width="470" height="500" titletext="New Form" onload="popup_insert_employee_onload">
+    <Layouts>
+      <Layout height="500" horizontalgap="0" mobileorientation="landscape" spacing="0px" tabletemplate="1* / 1*" verticalgap="0" width="470" stepcount="0">
+        <Edit id="input_name" taborder="0" left="204" top="43" width="150" height="30"/>
+        <Static id="Static00" taborder="1" text="이름" left="80" top="42" width="73" height="32"/>
+        <Static id="Static00_00" taborder="2" text=" 성별" left="80" top="124" width="73" height="32" onclick="Static00_00_onclick"/>
+        <Static id="Static00_01" taborder="3" text="부서" left="80" top="206" width="73" height="32" onclick="Static00_01_onclick"/>
+        <Static id="Static00_02" taborder="4" text="직급" left="80" top="288" width="73" height="32"/>
+        <Static id="Static00_03" taborder="5" text="연봉" left="80" top="370" width="73" height="32"/>
+        <Edit id="input_salary" taborder="6" left="204" top="379" width="150" height="30" inputtype="number"/>
+        <Radio id="input_gender" taborder="7" left="204" top="123" width="150" height="32" innerdataset="gender" codecolumn="gender" datacolumn="gender" layoutorder="2" columncount="2"/>
+        <Combo id="input_department" taborder="8" text="Combo00" left="207" top="205" width="150" height="36" innerdataset="ds_department" codecolumn="departmentId" datacolumn="departmentName"/>
+        <Combo id="input_position" taborder="9" text="Combo01" left="207" top="291" width="150" height="38" innerdataset="ds_position" codecolumn="position_id" datacolumn="position_name" onitemchanged="ds_pos_onitemchanged"/>
+        <Button id="Button00" taborder="10" text="추가" left="144" top="447" width="132" height="33" onclick="Button00_onclick"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[// 직원 추가 함수
+this.addEmployee = function(employeeData)
+{
+    var strSvcId = "addEmployee";
+    var strSvcUrl = "BASE_URL::api/v1/employee";  // 실제 API 엔드포인트로 변경해주세요
+    var strInDataset = "ds_input=ds_input";
+    var strOutDataset = "";
+    var strArg = "";
+    var strCallbackFunc = "fnCallback";
+    var bAsync = true;
+
+    // 입력 데이터셋 생성 및 데이터 설정
+    var ds_input = new Dataset();
+    ds_input.addColumn("employeeName", "STRING");
+    ds_input.addColumn("gender", "STRING");
+    ds_input.addColumn("departmentId", "INT");
+    ds_input.addColumn("positionId", "INT");
+    ds_input.addColumn("salary", "INT");
+
+    ds_input.addRow();
+    ds_input.setColumn(0, "employeeName", employeeData.name);
+    ds_input.setColumn(0, "gender", employeeData.gender);
+    ds_input.setColumn(0, "departmentId", employeeData.departmentId);
+    ds_input.setColumn(0, "positionId", employeeData.positionId);
+    ds_input.setColumn(0, "salary", employeeData.salary);
+
+    // 트랜잭션 실행
+    this.transaction(strSvcId, strSvcUrl, strInDataset, strOutDataset, strArg, strCallbackFunc, bAsync);
+};
+
+// 버튼 클릭 이벤트 핸들러
+this.Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+    var employeeData = {
+        name: this.input_name.value,
+        gender: this.input_gender.value,
+        departmentId: this.input_department.value,
+        positionId: this.input_position.value,
+        salary: this.input_salary.value
+    };
+
+    // 입력 값 검증
+    if (!employeeData.name || !employeeData.gender || !employeeData.departmentId || 
+        !employeeData.positionId || !employeeData.salary) {
+        alert("모든 필드를 입력해주세요.");
+        return;
+    }
+
+    // 직원 추가 함수 호출
+    this.addEmployee(employeeData);
+};
+
+// 콜백 함수 (기존 fnCallback 함수에 추가)
+this.fnCallback = function(svcID, errCD, errMSG)
+{
+    if (errCD < 0) {
+        this.alert("에러: " + errMSG);
+        return;
+    }
+    
+    // ... 기존 코드 ...
+
+    if (svcID == "addEmployee") {
+        this.alert("직원이 성공적으로 추가되었습니다.");
+        // 직원 목록 새로고침
+        this.reload();  // 또는 직원 목록을 새로 불러오는 함수 호출
+    }
+};]]></Script>
+    <Objects>
+      <Dataset id="gender">
+        <ColumnInfo>
+          <Column id="gender" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="gender">W</Col>
+          </Row>
+          <Row>
+            <Col id="gender">M</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_department">
+        <ColumnInfo>
+          <Column id="departmentId" type="BIGDECIMAL" size="256"/>
+          <Column id="departmentName" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="departmentId">1</Col>
+            <Col id="departmentName">경영기획</Col>
+          </Row>
+          <Row>
+            <Col id="departmentId">2</Col>
+            <Col id="departmentName">신규사업</Col>
+          </Row>
+          <Row>
+            <Col id="departmentId">3</Col>
+            <Col id="departmentName">재무</Col>
+          </Row>
+          <Row>
+            <Col id="departmentId">4</Col>
+            <Col id="departmentName">경영지원</Col>
+          </Row>
+          <Row>
+            <Col id="departmentId">5</Col>
+            <Col id="departmentName">법무</Col>
+          </Row>
+          <Row>
+            <Col id="departmentId">6</Col>
+            <Col id="departmentName">HR</Col>
+          </Row>
+          <Row>
+            <Col id="departmentId">7</Col>
+            <Col id="departmentName">IT</Col>
+          </Row>
+          <Row>
+            <Col id="departmentId">8</Col>
+            <Col id="departmentName">인공지능-빅데이터</Col>
+          </Row>
+          <Row>
+            <Col id="departmentId">9</Col>
+            <Col id="departmentName">사업개발/지원</Col>
+          </Row>
+          <Row>
+            <Col id="departmentId">10</Col>
+            <Col id="departmentName">영업</Col>
+          </Row>
+          <Row>
+            <Col id="departmentId">11</Col>
+            <Col id="departmentName">CS</Col>
+          </Row>
+          <Row>
+            <Col id="departmentId">12</Col>
+            <Col id="departmentName">안전기획</Col>
+          </Row>
+          <Row>
+            <Col id="departmentId">13</Col>
+            <Col id="departmentName">시설관리</Col>
+          </Row>
+          <Row>
+            <Col id="departmentId">14</Col>
+            <Col id="departmentName">공사관리</Col>
+          </Row>
+          <Row>
+            <Col id="departmentId">15</Col>
+            <Col id="departmentName">발전 설비</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_position">
+        <ColumnInfo>
+          <Column id="position_id" type="BIGDECIMAL" size="256"/>
+          <Column id="position_code" type="STRING" size="256"/>
+          <Column id="position_name" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="position_id">1</Col>
+            <Col id="position_code">J1</Col>
+            <Col id="position_name">주임</Col>
+          </Row>
+          <Row>
+            <Col id="position_id">2</Col>
+            <Col id="position_code">J2</Col>
+            <Col id="position_name">대리</Col>
+          </Row>
+          <Row>
+            <Col id="position_id">3</Col>
+            <Col id="position_code">J3</Col>
+            <Col id="position_name">과장</Col>
+          </Row>
+          <Row>
+            <Col id="position_id">4</Col>
+            <Col id="position_code">J4_1</Col>
+            <Col id="position_name">팀장</Col>
+          </Row>
+          <Row>
+            <Col id="position_id">5</Col>
+            <Col id="position_code">J4_2</Col>
+            <Col id="position_name">임원</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="input_position" propid="text" datasetid="ds_position" columnid="position_name"/>
+    </Bind>
+  </Form>
+</FDL>

@@ -5,7 +5,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
-import com.jb.nexacroserver.domain.employee.dto.EmployeeData;
+import com.jb.nexacroserver.domain.employee.dto.EmployeeSearch;
 import com.jb.nexacroserver.domain.employee.repository.EmployeeRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -16,22 +16,23 @@ public class EmployeeService {
 
 	private final EmployeeRepository employeeRepository;
 
-	public List<EmployeeData.Search> getEmployeeList(Long departmentId) {
+	public List<EmployeeSearch> getEmployeeList(Long departmentId) {
 
 		if (departmentId == null || departmentId == 0) {
 
 			return employeeRepository.findEmployees()
 				.stream()
-				.map(EmployeeData.Search::fromEntity)
+				.map(EmployeeSearch::fromEntity)
 				.collect(Collectors.toList());
 		}
 
 		return employeeRepository.findEmployeesByDepartment(departmentId)
 			.stream()
-			.map(EmployeeData.Search::fromEntity)
+			.map(EmployeeSearch::fromEntity)
 			.collect(Collectors.toList());
 	}
 
-
-
+	public void deleteEmployee(Long employeeId) {
+		employeeRepository.deleteById(employeeId);
+	}
 }
