@@ -9,6 +9,23 @@
       <Script rule_version="1.02"/>
       <GeneratorInfo rule_version="1.3"/>
     </Rule>
-    <Info project="C:\Users\SSAFY\study\Nexsacro_Learning\JB_HR_example\" generated="C:\Users\SSAFY\Documents\TOBESOFT\Nexacro N\outputs\JB_HR_example\"><File url="environment.xml" checksum="20241026163726" errormsg=""/><File url="typedefinition.xml" checksum="20241030215728" errormsg=""/><File url="appvariables.xml" checksum="20241026163726" errormsg=""/><File url="_resource_\_theme_\blue\theme.xcss" checksum="20241026163726" errormsg=""/><File url="C:\Program Files (x86)\TOBESOFT\Nexacro N\SDK\24.0.0\nexacrolib\framework\Framework.json" checksum="20240923092114" errormsg=""/><File url="C:\Program Files (x86)\TOBESOFT\Nexacro N\SDK\24.0.0\nexacrolib\resources\Resource.json" checksum="20240923092116" errormsg=""/><File url="C:\Program Files (x86)\TOBESOFT\Nexacro N\SDK\24.0.0\nexacrolib\component\CompBase.json" checksum="20240923092112" errormsg=""/><File url="C:\Program Files (x86)\TOBESOFT\Nexacro N\SDK\24.0.0\nexacrolib\component\ComComp.json" checksum="20240923092110" errormsg=""/><File url="C:\Program Files (x86)\TOBESOFT\Nexacro N\SDK\24.0.0\nexacrolib\component\Grid.json" checksum="20240923092112" errormsg=""/><File url="C:\Program Files (x86)\TOBESOFT\Nexacro N\SDK\24.0.0\nexacrolib\component\ListView.json" checksum="20240923092116" errormsg=""/><File url="C:\Program Files (x86)\TOBESOFT\Nexacro N\SDK\24.0.0\nexacrolib\component\DeviceAPI.json" checksum="20240923092112" errormsg=""/><File url="C:\Program Files (x86)\TOBESOFT\Nexacro N\SDK\24.0.0\nexacrolib\component\MobileComp.json" checksum="20240923092118" errormsg=""/><File url="FrameBase\Form_Left.xfdl" checksum="20241029201715" errormsg=""/><File url="Application_Desktop.xadl" checksum="20241026163726" errormsg=""/><File url="FrameBase\Form_Work.xfdl" checksum="20241030221239" errormsg=""/><File url="FrameBase\popup_insert_employee.xfdl" checksum="20241030220944" errormsg=""/></Info>
+    <Info project="C:\Users\SSAFY\study\Nexsacro_Learning\JB_HR_example\" generated="C:\Users\SSAFY\Documents\TOBESOFT\Nexacro N\outputs\JB_HR_example\">
+      <File url="environment.xml" checksum="20241026163726" errormsg=""/>
+      <File url="typedefinition.xml" checksum="20241030215728" errormsg=""/>
+      <File url="appvariables.xml" checksum="20241026163726" errormsg=""/>
+      <File url="_resource_\_theme_\blue\theme.xcss" checksum="20241026163726" errormsg=""/>
+      <File url="C:\Program Files (x86)\TOBESOFT\Nexacro N\SDK\24.0.0\nexacrolib\framework\Framework.json" checksum="20240923092114" errormsg=""/>
+      <File url="C:\Program Files (x86)\TOBESOFT\Nexacro N\SDK\24.0.0\nexacrolib\resources\Resource.json" checksum="20240923092116" errormsg=""/>
+      <File url="C:\Program Files (x86)\TOBESOFT\Nexacro N\SDK\24.0.0\nexacrolib\component\CompBase.json" checksum="20240923092112" errormsg=""/>
+      <File url="C:\Program Files (x86)\TOBESOFT\Nexacro N\SDK\24.0.0\nexacrolib\component\ComComp.json" checksum="20240923092110" errormsg=""/>
+      <File url="C:\Program Files (x86)\TOBESOFT\Nexacro N\SDK\24.0.0\nexacrolib\component\Grid.json" checksum="20240923092112" errormsg=""/>
+      <File url="C:\Program Files (x86)\TOBESOFT\Nexacro N\SDK\24.0.0\nexacrolib\component\ListView.json" checksum="20240923092116" errormsg=""/>
+      <File url="C:\Program Files (x86)\TOBESOFT\Nexacro N\SDK\24.0.0\nexacrolib\component\DeviceAPI.json" checksum="20240923092112" errormsg=""/>
+      <File url="C:\Program Files (x86)\TOBESOFT\Nexacro N\SDK\24.0.0\nexacrolib\component\MobileComp.json" checksum="20240923092118" errormsg=""/>
+      <File url="FrameBase\Form_Left.xfdl" checksum="20241029201715" errormsg=""/>
+      <File url="Application_Desktop.xadl" checksum="20241026163726" errormsg=""/>
+      <File url="FrameBase\Form_Work.xfdl" checksum="20241030224540" errormsg=""/>
+      <File url="FrameBase\popup_insert_employee.xfdl" checksum="20241030220944" errormsg=""/>
+    </Info>
   </GenInfo>
 </root>

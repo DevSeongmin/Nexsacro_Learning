@@ -257,7 +257,6 @@ this.btn_insert_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 this.Form_Work_onactivate = function(obj:nexacro.Form,e:nexacro.ActivateEventInfo)
 {
 
-		trace("엑티브브브브");
 		
 	    this.transaction("getEmployees", 
 		"BASE_URL::/api/v1/employee",
