@@ -2,6 +2,7 @@ package com.jb.nexacroserver.domain.employee.entity;
 
 import com.jb.nexacroserver.core.entity.BaseEntity;
 import com.jb.nexacroserver.domain.department.entity.Department;
+import com.nexacro.java.xapi.license.A.E;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -44,4 +45,14 @@ public class Employee extends BaseEntity {
 
 	Integer salary;
 
+	public static Employee of(String name, String gender, Department department, Position position, Integer salary) {
+		Employee employee = new Employee();
+		employee.name = name;
+		employee.gender = gender.equals("M") ? Gender.M : Gender.F;
+		employee.department = department;
+		employee.position = position;
+		employee.salary = salary;
+		return employee;
+	}
 }
+

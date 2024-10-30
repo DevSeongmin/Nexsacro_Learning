@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="popup_insert_employee" width="470" height="500" titletext="New Form" onload="popup_insert_employee_onload">
+  <Form id="popup_insert_employee" width="470" height="500" titletext="New Form" onload="popup_insert_employee_onload" onclose="popup_insert_employee_onclose">
     <Layouts>
       <Layout height="500" horizontalgap="0" mobileorientation="landscape" spacing="0px" tabletemplate="1* / 1*" verticalgap="0" width="470" stepcount="0">
         <Edit id="input_name" taborder="0" left="204" top="43" width="150" height="30"/>
@@ -19,28 +19,40 @@
     <Script type="xscript5.1"><![CDATA[// 직원 추가 함수
 this.addEmployee = function(employeeData)
 {
+	trace(employeeData.gender);
     var strSvcId = "addEmployee";
-    var strSvcUrl = "BASE_URL::api/v1/employee";  // 실제 API 엔드포인트로 변경해주세요
-    var strInDataset = "ds_input=ds_input";
+    var strSvcUrl = "BASE_URL::api/v1/employee/add?" + 
+                "name=" + employeeData.name + 
+                "&gender=" + encodeURIComponent(employeeData.gender) + 
+                "&departmentId=" + encodeURIComponent(employeeData.departmentId) +
+                "&positionId=" + encodeURIComponent(employeeData.positionId) + 
+                "&salary=" + encodeURIComponent(employeeData.salary);
+    var strInDataset = "";
     var strOutDataset = "";
     var strArg = "";
     var strCallbackFunc = "fnCallback";
     var bAsync = true;
 
+	trace(strSvcUrl);
+	
     // 입력 데이터셋 생성 및 데이터 설정
-    var ds_input = new Dataset();
-    ds_input.addColumn("employeeName", "STRING");
-    ds_input.addColumn("gender", "STRING");
-    ds_input.addColumn("departmentId", "INT");
-    ds_input.addColumn("positionId", "INT");
-    ds_input.addColumn("salary", "INT");
+//     var ds_input = new Dataset("ds_input");
+//     ds_input.addColumn("employeeName", "STRING");
+//     ds_input.addColumn("gender", "STRING");
+//     ds_input.addColumn("departmentId", "STRING");
+//     ds_input.addColumn("positionId", "STRING");
+//     ds_input.addColumn("salary", "STRING");
+// 
+//     ds_input.addRow();
+//     ds_input.setColumn(0, "employeeName", employeeData.name);
+//     ds_input.setColumn(0, "gender", employeeData.gender);
+//     ds_input.setColumn(0, "departmentId", parseInt(employeeData.departmentId));
+// 	ds_input.setColumn(0, "positionId", parseInt(employeeData.positionId));
+// 	ds_input.setColumn(0, "salary", parseInt(employeeData.salary));
+// 
+// 	trace("Employee Data:", JSON.stringify(employeeData));
+// 	trace("Dataset JSON:", JSON.stringify(ds_input.saveJSON()));
 
-    ds_input.addRow();
-    ds_input.setColumn(0, "employeeName", employeeData.name);
-    ds_input.setColumn(0, "gender", employeeData.gender);
-    ds_input.setColumn(0, "departmentId", employeeData.departmentId);
-    ds_input.setColumn(0, "positionId", employeeData.positionId);
-    ds_input.setColumn(0, "salary", employeeData.salary);
 
     // 트랜잭션 실행
     this.transaction(strSvcId, strSvcUrl, strInDataset, strOutDataset, strArg, strCallbackFunc, bAsync);
@@ -57,6 +69,8 @@ this.Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
         salary: this.input_salary.value
     };
 
+	trace(employeeData.name);
+	
     // 입력 값 검증
     if (!employeeData.name || !employeeData.gender || !employeeData.departmentId || 
         !employeeData.positionId || !employeeData.salary) {
@@ -66,6 +80,8 @@ this.Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 
     // 직원 추가 함수 호출
     this.addEmployee(employeeData);
+	
+	
 };
 
 // 콜백 함수 (기존 fnCallback 함수에 추가)
@@ -81,9 +97,13 @@ this.fnCallback = function(svcID, errCD, errMSG)
     if (svcID == "addEmployee") {
         this.alert("직원이 성공적으로 추가되었습니다.");
         // 직원 목록 새로고침
-        this.reload();  // 또는 직원 목록을 새로 불러오는 함수 호출
+		this.getOwnerFrame().form.fn_popupCallback(this.getOwnerFrame().name, "OK");
+        this.close();
+    
     }
-};]]></Script>
+};
+
+]]></Script>
     <Objects>
       <Dataset id="gender">
         <ColumnInfo>

@@ -14,6 +14,7 @@ public interface EmployeeRepository extends JpaRepository<Employee, Long> {
 			FROM Employee e
 			JOIN FETCH e.department
 			JOIN FETCH e.position
+			ORDER BY  e.hire_date DESC
 """)
 	List<Employee> findEmployees();
 
@@ -23,6 +24,7 @@ public interface EmployeeRepository extends JpaRepository<Employee, Long> {
 			JOIN FETCH e.department
 			JOIN FETCH e.position
 			WHERE e.department.id = :departmentId
+			ORDER BY  e.hire_date DESC
 			""")
 	List<Employee> findEmployeesByDepartment(Long departmentId);
 }

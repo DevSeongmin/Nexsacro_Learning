@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="Form_Work" width="1080" height="720" titletext="Form_Work" onload="Form_Work_onload">
+  <Form id="Form_Work" width="1080" height="720" titletext="Form_Work" onactivate="Form_Work_onactivate" onload="Form_Work_onload">
     <Layouts>
       <Layout width="1080" height="720" screenid="Desktop_screen">
         <Grid id="Grid00" taborder="0" left="210" top="89" width="600" height="620" binddataset="ds_employee">
@@ -119,21 +119,21 @@
     <Script type="xscript5.1"><![CDATA[
 this.Form_Work_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
-    this.transaction("getEmployees", 
-		"BASE_URL::/api/v1/employee",
-		"",
-		"ds_employee=ds_employee",
-		"",
-		"fnCallback",
-		true);
-	
-	this.transaction("getDepartments", 
-		"BASE_URL::/api/v1/department",
-		"",
-		"ds_department=ds_department",
-		"",
-		"fnCallback",
-		true);
+//     this.transaction("getEmployees", 
+// 		"BASE_URL::/api/v1/employee",
+// 		"",
+// 		"ds_employee=ds_employee",
+// 		"",
+// 		"fnCallback",
+// 		true);
+// 	
+// 	this.transaction("getDepartments", 
+// 		"BASE_URL::/api/v1/department",
+// 		"",
+// 		"ds_department=ds_department",
+// 		"",
+// 		"fnCallback",
+// 		true);
 };
 
 
@@ -246,16 +246,34 @@ this.btn_insert_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
                            , null
                            , this
                            , "fn_popupCallback");
+						   
+				   
 };
 
-// 팝업 콜백 함수
-this.fn_popupCallback = function(strPopupID, strReturn)
+
+
+
+
+this.Form_Work_onactivate = function(obj:nexacro.Form,e:nexacro.ActivateEventInfo)
 {
-    if(strReturn == "OK")
-    {
-        // 팝업에서 "OK"를 반환했을 때의 처리
-        this.reload();  // 예: 현재 폼 리로드
-    }
+
+		trace("엑티브브브브");
+		
+	    this.transaction("getEmployees", 
+		"BASE_URL::/api/v1/employee",
+		"",
+		"ds_employee=ds_employee",
+		"",
+		"fnCallback",
+		true);
+	
+	this.transaction("getDepartments", 
+		"BASE_URL::/api/v1/department",
+		"",
+		"ds_department=ds_department",
+		"",
+		"fnCallback",
+		true);
 };
 ]]></Script>
   </Form>

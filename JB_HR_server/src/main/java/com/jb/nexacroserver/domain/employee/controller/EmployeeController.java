@@ -1,12 +1,10 @@
 package com.jb.nexacroserver.domain.employee.controller;
 
 import java.io.ByteArrayOutputStream;
-import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.Mapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,7 +21,6 @@ import com.nexacro.java.xapi.data.PlatformData;
 import com.nexacro.java.xapi.tx.PlatformException;
 import com.nexacro.java.xapi.tx.PlatformResponse;
 import com.nexacro.java.xapi.tx.PlatformType;
-import com.nexacro.uiadapter.spring.core.annotation.ParamDataSet;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -111,28 +108,26 @@ public class EmployeeController {
 	}
 
 
-	@PostMapping("")
-	public ResponseEntity<byte[]> addEmployee(@ParamDataSet(name="ds_input") DataSet dsInput) throws PlatformException {
-		// 입력 데이터 처리
-		String employeeName = dsInput.getString(0, "employeeName");
-		String gender = dsInput.getString(0, "gender");
-		int departmentId = dsInput.getInt(0, "departmentId");
-		int positionId = dsInput.getInt(0, "positionId");
-		int salary = dsInput.getInt(0, "salary");
+	@GetMapping("/add")
+	public ResponseEntity<byte[]> addEmployee(
+		@RequestParam("name") String name,
+		@RequestParam("gender") String gender,
+		@RequestParam("departmentId") Long departmentId,
+		@RequestParam("positionId") Long positionId,
+		@RequestParam("salary") Integer salary
+	) throws PlatformException {
 
-		System.out.println("employeeName: " + employeeName);
-		System.out.println("gender " + gender);
-		System.out.println("departmentId: " + departmentId);
-		System.out.println("positionId: " + positionId);
-		System.out.println("salary: " + salary);
+		System.out.println(name);
+		System.out.println(gender);
+		System.out.println(departmentId);
+		System.out.println(positionId);
+		System.out.println(salary);
 
-
-		// 여기서 employeeService를 사용하여 직원 추가 로직 구현
-		// 예: employeeService.addEmployee(employeeName, gender, departmentId, positionId, salary);
+		employeeService.insertEmployee(name, gender, departmentId, positionId, salary);
 
 		PlatformData outData = new PlatformData();
-
-		// 결과 메시지를 담은 데이터셋 생성
+		//
+		// // 결과 메시지를 담은 데이터셋 생성
 		DataSet dsResult = new DataSet("ds_result");
 		dsResult.addColumn("result", DataTypes.STRING);
 		dsResult.addColumn("message", DataTypes.STRING);
@@ -142,7 +137,7 @@ public class EmployeeController {
 		dsResult.set(row, "message", "Employee successfully added");
 
 		outData.addDataSet(dsResult);
-
+		//
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 		PlatformResponse pRes = new PlatformResponse(baos, PlatformType.CONTENT_TYPE_XML, "UTF-8");
 		pRes.setData(outData);

@@ -50,9 +50,9 @@
     <Service prefixid="font" type="resource" url="./_resource_/_font_/" version="0" cachelevel="session" include_subdir="false"/>
     <Service prefixid="stringrc" type="resource" url="./_resource_/_stringrc_/" version="0" cachelevel="session" include_subdir="false"/>
     <Service prefixid="extlib" type="resource" url="./_extlib_/" version="0" cachelevel="session" include_subdir="true"/>
-    <Service prefixid="Base" type="form" url="./Base/" version="0" cachelevel="session" include_subdir="false" communicationversion="0"/>
-    <Service prefixid="FrameBase" type="form" url="./FrameBase/" version="0" cachelevel="session" include_subdir="false" communicationversion="0"/>
-    <Service prefixid="BASE_URL" type="JSP" url="http://localhost:8080" version="0" cachelevel="session" include_subdir="false" communicationversion="0"/>
+    <Service prefixid="Base" type="form" url="./Base/" version="0" cachelevel="none" include_subdir="false" communicationversion="0"/>
+    <Service prefixid="FrameBase" type="form" url="./FrameBase/" version="0" cachelevel="none" include_subdir="false" communicationversion="0"/>
+    <Service prefixid="BASE_URL" type="JSP" url="http://localhost:8080" version="0" cachelevel="none" include_subdir="false" communicationversion="0"/>
   </Services>
   <Protocols/>
   <DeviceAdaptors/>
